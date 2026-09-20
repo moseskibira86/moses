@@ -1,0 +1,238 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile representation in BizHubKE",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "fullName": { "type": "string" },
+        "email": { "type": "string" },
+        "phoneNumber": { "type": "string" },
+        "role": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "fullName", "email"]
+    },
+    "Business": {
+      "title": "Business",
+      "description": "SME business entity",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "ownerId": { "type": "string" },
+        "name": { "type": "string" },
+        "county": { "type": "string" },
+        "businessType": { "type": "string" },
+        "businessSize": { "type": "string" },
+        "currency": { "type": "string" },
+        "mpesaTillNumber": { "type": "string" },
+        "mpesaPaybill": { "type": "string" },
+        "tagline": { "type": "string" },
+        "onboardingCompleted": { "type": "boolean" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "name", "ownerId"]
+    },
+    "Sale": {
+      "title": "Sale",
+      "description": "Sales and POS transaction",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "businessId": { "type": "string" },
+        "customerId": { "type": "string" },
+        "customerName": { "type": "string" },
+        "totalAmount": { "type": "number" },
+        "paymentMethod": { "type": "string" },
+        "mpesaReceiptNumber": { "type": "string" },
+        "notes": { "type": "string" },
+        "items": {
+          "type": "array",
+          "items": { "type": "object" }
+        },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "businessId", "totalAmount"]
+    },
+    "Expense": {
+      "title": "Expense",
+      "description": "Business expense or bill",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "businessId": { "type": "string" },
+        "category": { "type": "string" },
+        "amount": { "type": "number" },
+        "description": { "type": "string" },
+        "paymentMethod": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "businessId", "amount", "category"]
+    },
+    "Product": {
+      "title": "Product",
+      "description": "Inventory product item",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "businessId": { "type": "string" },
+        "name": { "type": "string" },
+        "sku": { "type": "string" },
+        "category": { "type": "string" },
+        "costPrice": { "type": "number" },
+        "sellingPrice": { "type": "number" },
+        "stockQuantity": { "type": "number" },
+        "minAlertQuantity": { "type": "number" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "businessId", "name", "sellingPrice"]
+    },
+    "Invoice": {
+      "title": "Invoice",
+      "description": "Tax invoice with eTIMS compliance details",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "businessId": { "type": "string" },
+        "customerId": { "type": "string" },
+        "invoiceNumber": { "type": "string" },
+        "etimsCode": { "type": "string" },
+        "totalAmount": { "type": "number" },
+        "status": { "type": "string" },
+        "dueDate": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "businessId", "invoiceNumber", "totalAmount"]
+    },
+    "Customer": {
+      "title": "Customer",
+      "description": "Customer record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "businessId": { "type": "string" },
+        "name": { "type": "string" },
+        "phone": { "type": "string" },
+        "email": { "type": "string" },
+        "outstandingBalance": { "type": "number" },
+        "totalPurchases": { "type": "number" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "businessId", "name"]
+    },
+    "Supplier": {
+      "title": "Supplier",
+      "description": "Supplier contact and details",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "businessId": { "type": "string" },
+        "name": { "type": "string" },
+        "phone": { "type": "string" },
+        "email": { "type": "string" },
+        "balance": { "type": "number" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "businessId", "name"]
+    },
+    "Folder": {
+      "title": "Folder",
+      "description": "User file folder",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["name"]
+    },
+    "File": {
+      "title": "File",
+      "description": "User uploaded file metadata",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "folderId": { "type": "string" },
+        "size": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["name"]
+    },
+    "Note": {
+      "title": "Note",
+      "description": "User private note",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "content": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["title"]
+    },
+    "TeamMember": {
+      "title": "TeamMember",
+      "description": "User team member",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "role": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["name"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profiles"
+    },
+    "/users/{userId}/folders/{folderId}": {
+      "schema": "Folder",
+      "description": "User folders"
+    },
+    "/users/{userId}/files/{fileId}": {
+      "schema": "File",
+      "description": "User files"
+    },
+    "/users/{userId}/notes/{noteId}": {
+      "schema": "Note",
+      "description": "User notes"
+    },
+    "/users/{userId}/teamMembers/{memberId}": {
+      "schema": "TeamMember",
+      "description": "User team members"
+    },
+    "/businesses/{businessId}": {
+      "schema": "Business",
+      "description": "Business organization documents"
+    },
+    "/sales/{saleId}": {
+      "schema": "Sale",
+      "description": "Sales transactions"
+    },
+    "/expenses/{expenseId}": {
+      "schema": "Expense",
+      "description": "Expense entries"
+    },
+    "/products/{productId}": {
+      "schema": "Product",
+      "description": "Inventory stock products"
+    },
+    "/invoices/{invoiceId}": {
+      "schema": "Invoice",
+      "description": "eTIMS Tax Invoices"
+    },
+    "/customers/{customerId}": {
+      "schema": "Customer",
+      "description": "Client records"
+    },
+    "/suppliers/{supplierId}": {
+      "schema": "Supplier",
+      "description": "Vendor & Supplier records"
+    }
+  }
+}
